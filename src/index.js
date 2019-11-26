@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
+import {store} from './redux/store/store';
+import MainPage from "./pages/MainPage";
 
-class App extends React.Component{
-    render(){
-        return(
-            <div>
-                <h1>Hello World</h1>
-            </div>
-        )
-    }
-}
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={store}>
+        <MainPage />
+    </Provider>,
+    document.getElementById('root')
+);
