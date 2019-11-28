@@ -1,11 +1,12 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import style from "./Header.css"
 
 function Header() {
     return(
         <header>
             <nav>
-                <ul>
+                <ul className={style.menu}>
                     <li>
                         <Link to={'/'}> Home </Link>
                     </li>
