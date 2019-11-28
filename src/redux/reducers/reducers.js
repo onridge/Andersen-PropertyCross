@@ -1,21 +1,22 @@
-import {increment, decrement} from "../constants";
+import { increment, decrement } from '../constants';
 
 const initState = {
-    count: 0
+    count: 0,
 };
 
-export const counterReducer = (state = initState, action) => {
+const counterReducer = (state = initState, action) => {
     switch (action.type) {
         case increment:
             return {
-                count: state.count + 1
+                count: state.count + 1,
             };
         case decrement:
             return {
-                count: state.count - 1
+                count: state.count - 1,
             };
         default:
-            return state
+            return state;
     }
 };
 
+export default counterReducer;
