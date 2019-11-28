@@ -1,15 +1,16 @@
 import React from 'react';
-import {increment, decrement} from "../redux/constants";
+import {increment, decrement} from "../../redux/constants";
 import {connect} from 'react-redux';
+import style from './MainPage.css'
 
 class MainPage extends React.Component{
     render(){
         return(
             <div>
-                <h1>Hello World</h1>
-                <div>
+                <h1 className={style.head}> Hello World </h1>
+                <div className={style.counter}>
                     <button onClick={this.props.onIncrement}> + </button>
-                    <h2>{this.props.counter}</h2>
+                    <h2> {this.props.counter} </h2>
                     <button onClick={this.props.onDecrement}> - </button>
                 </div>
             </div>
