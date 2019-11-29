@@ -5,14 +5,15 @@ module.exports = {
     entry: path.resolve(__dirname, 'src/index'),
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/',
     },
     module: {
         rules: [
             {
-            test: /\.js$/,
-            include: path.resolve(__dirname, 'src'),
-            use: ['babel-loader']
+                test: /\.js$/,
+                include: path.resolve(__dirname, 'src'),
+                use: ['babel-loader'],
             },
             {
                 test: /\.css$/i,
@@ -25,17 +26,19 @@ module.exports = {
                             importLoaders: 1,
                         },
                     },
-                    {loader: 'postcss-loader'}
+                    { loader: 'postcss-loader' },
                 ],
-            }]
+            },
+        ],
     },
     devServer: {
-        contentBase:  path.resolve(__dirname, 'dist'),
-        port: 3000
+        contentBase: path.resolve(__dirname, 'dist'),
+        port: 3000,
+        historyApiFallback: true,
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "public/index.html"
-        })
-    ]
+            template: 'public/index.html',
+        }),
+    ],
 };

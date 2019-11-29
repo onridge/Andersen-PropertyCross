@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import style from './Header.css';
 
 function Header() {
@@ -8,16 +8,24 @@ function Header() {
             <nav>
                 <ul className={style.menu}>
                     <li>
-                        <Link to="/"> Home </Link>
+                        <NavLink exact to="/" activeClassName={style.activeButton}>
+                            Home
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to="/page1"> Page 1 </Link>
+                        <NavLink to="/page1" activeClassName={style.activeButton}>
+                            Page 1
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to="/page2"> Page 2 </Link>
+                        <NavLink to="/page2" activeClassName={style.activeButton}>
+                            Page 2
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to="/about"> About project </Link>
+                        <NavLink exact to="/about" activeClassName={style.activeButton}>
+                            About project
+                        </NavLink>
                     </li>
                 </ul>
             </nav>
