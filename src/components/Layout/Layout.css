@@ -1,0 +1,17 @@
+.container {
+    border: 1px solid #000000;
+    margin: 0 auto;
+
+    @media (--mobile-width) {
+        width: 310px;
+    }
+
+    @media (--tablets-width) {
+        width: 550px;
+    }
+
+    @media (--desktop-width) {
+        width: 1000px;
+    }
+}
+

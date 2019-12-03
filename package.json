@@ -7,6 +7,7 @@
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
     "lint": "eslint src/**/*.js",
+    "stylelint": "stylelint src/**/*.css",
     "lint:fix": "eslint --fix src/**/*.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,7 +27,8 @@
       "@babel/preset-react"
     ],
     "plugins": [
-      "react-css-modules"
+      "react-css-modules",
+      "@babel/plugin-proposal-class-properties"
     ]
   },
   "husky": {
@@ -36,12 +38,14 @@
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
     "@babel/preset-react": "^7.7.4",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
+    "babel-polyfill": "^6.26.0",
     "css-loader": "^3.2.0",
-    "eslint": "^6.7.0",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-import": "^2.18.2",
@@ -57,8 +61,11 @@
     "postcss-url": "^8.0.0",
     "prettier": "^1.19.1",
     "prop-types": "^15.7.2",
+    "ramda": "^0.26.1",
+    "redux-thunk": "^2.3.0",
     "require": "^2.4.20",
     "style-loader": "^1.0.0",
+    "stylelint": "^12.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
