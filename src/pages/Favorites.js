@@ -1,6 +1,6 @@
 import React from 'react';
 
-function AboutPage() {
+function Favorites() {
     return (
         <div>
             <h2>Page About Project</h2>
@@ -8,4 +8,4 @@ function AboutPage() {
     );
 }
 
-export default AboutPage;
+export default Favorites;

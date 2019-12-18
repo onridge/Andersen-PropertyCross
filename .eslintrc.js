@@ -87,7 +87,7 @@ module.exports = {
         ],
         'newline-after-var': [
 // Нужно влкючить, когда поправят баг с добавлением пробела перед let
-            0,
+            1,
             'always',
         ],
         'new-cap': [

@@ -1,30 +1,20 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import style from './Header.css';
+import styles from './Header.css';
 
 function Header() {
     return (
         <header>
             <nav>
-                <ul className={style.menu}>
-                    <li>
-                        <NavLink exact to="/" activeClassName={style.activeButton}>
-                            Home
+                <ul className={styles.menu}>
+                    <li className={styles.elem}>
+                        <NavLink exact to="/" className={styles.menuButton}>
+                            PropertyCross
                         </NavLink>
                     </li>
-                    <li>
-                        <NavLink to="/page1" activeClassName={style.activeButton}>
-                            Page 1
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/page2" activeClassName={style.activeButton}>
-                            Page 2
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink exact to="/about" activeClassName={style.activeButton}>
-                            About project
+                    <li className={styles.elem}>
+                        <NavLink to="/favorites" className={styles.menuButton}>
+                            Favorites
                         </NavLink>
                     </li>
                 </ul>

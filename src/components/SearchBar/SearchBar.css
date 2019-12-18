@@ -1,0 +1,50 @@
+.searchForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.searchFormButton {
+    display: inline;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+
+    @media (--mobile-width) {
+        width: 140px;
+    }
+
+    @media (--tablets-width) {
+        width: 100px;
+    }
+
+    @media (--desktop-width) {
+        width: 90px;
+    }
+}
+
+.buttonContainer {
+    display: flex;
+}
+
+.inputField {
+    border-radius: 20px;
+    text-align: center;
+
+    @media (--mobile-width) {
+        width: 300px;
+    }
+
+    @media (--tablets-width) {
+        width: 350px;
+    }
+
+    @media (--desktop-width) {
+        width: 350px;
+    }
+
+    &:focus {
+         border: 3px solid #555;
+     }
+}
+

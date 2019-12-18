@@ -1,45 +1,22 @@
 import React from 'react';
-import { increment, decrement } from '../../redux/constants';
-import { connect } from 'react-redux';
-import style from './MainPage.css';
-import PropTypes from 'prop-types';
+import SearchBarPure from '../../components/SearchBar/SeachBarPure';
+import Description from '../../components/interfaceElements/TextContent/Description/Description';
+import Layout from '../../components/Layout/Layout';
 
 class MainPage extends React.PureComponent {
     render() {
         return (
-            <div>
-                <h1 className={style.head}> Hello World </h1>
-                <div className={style.counter}>
-                    <button type="button" onClick={this.props.onIncrement}>
-                        +1
-                    </button>
-                    <h2> {this.props.counter} </h2>
-                    <button type="button" onClick={this.props.onDecrement}>
-                        -1
-                    </button>
+            <Layout>
+                <div>
+                    <Description>
+                        Use the form below to search for houses to buy. You can search by place-name, postcode, or click
+                        &apos;My location&apos;, to search in your current location
+                    </Description>
+                    <SearchBarPure />
                 </div>
-            </div>
+            </Layout>
         );
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        counter: state.count,
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        onIncrement: () => dispatch({ type: increment }),
-        onDecrement: () => dispatch({ type: decrement }),
-    };
-}
-
-MainPage.propTypes = {
-    counter: PropTypes.number,
-    onIncrement: PropTypes.func,
-    onDecrement: PropTypes.func,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
+export default MainPage;

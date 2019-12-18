@@ -1,9 +1,33 @@
 .menu {
+    display: flex;
     list-style: none;
-    font-size: 24px;
+    background: #33b5e5;
+    font-size: 18px;
+
+    @media (--mobile-width) {
+        font-size: 18px;
+    }
+
+    @media (--tablets-width) {
+        font-size: 20px;
+    }
+
+    @media (--desktop-width) {
+        font-size: 24px;
+    }
 }
 
-.activeButton {
-    color: red;
+.menuButton {
+    color: #000000;
     font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+        background: #ffffff;
+     }
+}
+
+.elem {
+    padding-left: 10px;
 }
