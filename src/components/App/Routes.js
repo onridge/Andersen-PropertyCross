@@ -3,12 +3,14 @@ import { Switch, Route } from 'react-router';
 import MainPage from '../../pages/MainPage/MainPage';
 import ResultsList from '../ResultsList/ResultsList';
 import Favorites from '../../pages/Favorites';
+import ApartmentDetails from '../ApartmentDetails/ApartmentDetails';
 
 function Routes() {
     return (
         <Switch>
             <Route exact path="/" component={MainPage} />
-            <Route path="/results/:city" component={ResultsList} />
+            <Route exact path="/results/:city" component={ResultsList} />
+            <Route path="/results/:city/:id" component={ApartmentDetails} />
             <Route path="/favorites" component={Favorites} />
         </Switch>
     );

@@ -14,7 +14,7 @@ class PropertyListElement extends React.PureComponent {
         const { value } = this.state;
         const { item } = this.props;
 
-        if (!value === '') {
+        if (value) {
             return <Redirect to={`/results/${item}`} />;
         }
 
