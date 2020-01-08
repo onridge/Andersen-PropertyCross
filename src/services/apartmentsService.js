@@ -26,7 +26,7 @@ function apartmentsService(payload) {
         })
         .then((data) => {
             if (validatingCodeResponse(data)) {
-                return data;
+                return data.response;
             }
             throw new Error('There was a problem with your search');
         });

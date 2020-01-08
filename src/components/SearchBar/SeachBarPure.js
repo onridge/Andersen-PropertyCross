@@ -38,7 +38,7 @@ class SearchBarPure extends React.PureComponent {
         const { value, isRedirect, errorMessage } = this.state;
 
         if (isRedirect) {
-            return <Redirect to={`/result?city=${value}`} />;
+            return <Redirect to={`/results/${value}`} />;
         }
 
         return (
