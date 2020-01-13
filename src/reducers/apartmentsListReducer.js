@@ -10,6 +10,8 @@ function apartmentsListReducer(state = initState, action) {
             return { ...state, apartmentsList: [...state.apartmentsList, ...payload.listings] };
         case 'GET_CURRENT_APARTMENT':
             return { ...state, currentApartment: payload };
+        case 'STATUS_FAVORITES':
+            return { ...state, isFavorite: payload };
         default:
             return state;
     }

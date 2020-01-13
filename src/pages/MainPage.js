@@ -1,7 +1,7 @@
 import React from 'react';
-import SearchBarPure from '../../components/SearchBar/SeachBarPure';
-import Description from '../../components/TextContent/Description/Description';
-import Layout from '../../components/Layout/Layout';
+import SearchBarPure from '../components/SearchBar/SeachBarPure';
+import Description from '../components/TextContent/Description/Description';
+import Layout from '../components/Layout/Layout';
 
 class MainPage extends React.PureComponent {
     render() {

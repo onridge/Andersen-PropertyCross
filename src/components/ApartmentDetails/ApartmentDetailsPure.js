@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import ApartmentView from '../ApartmentView/ApartmentView';
 import Layout from '../Layout/Layout';
 import Loader from '../loader/loader';
+import Text from '../TextContent/Text/Text';
+import styles from './ApartmentDetails.css';
 
 export default class ApartmentDetails extends React.PureComponent {
     componentDidMount() {
@@ -15,8 +17,14 @@ export default class ApartmentDetails extends React.PureComponent {
         });
     }
 
+    handleClick = () => {
+        const { currentApartment, match, addToFavoritesList } = this.props;
+
+        addToFavoritesList({ ...currentApartment, city: match.params.city });
+    };
+
     render() {
-        const { currentApartment, match } = this.props;
+        const { currentApartment, match, history, isFavorite } = this.props;
 
         if (!currentApartment) {
             return <Loader />;
@@ -24,6 +32,15 @@ export default class ApartmentDetails extends React.PureComponent {
 
         return (
             <Layout>
+                <div className={styles.wrapper}>
+                    <button type="button" className={styles.button} onClick={history.goBack}>
+                        Back
+                    </button>
+                    <Text>Property Details</Text>
+                    <button type="button" className={styles.button} onClick={this.handleClick}>
+                        {isFavorite ? '-' : '+'}
+                    </button>
+                </div>
                 <ApartmentView
                     city={match.params.city}
                     image={currentApartment.thumb_url}
@@ -39,6 +56,9 @@ export default class ApartmentDetails extends React.PureComponent {
 
 ApartmentDetails.propTypes = {
     getApartment: PropTypes.func,
+    isFavorite: PropTypes.bool,
     currentApartment: PropTypes.object,
     match: PropTypes.object,
+    history: PropTypes.object,
+    addToFavoritesList: PropTypes.func,
 };
