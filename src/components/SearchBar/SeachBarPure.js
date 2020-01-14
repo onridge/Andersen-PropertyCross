@@ -30,7 +30,7 @@ class SearchBarPure extends React.PureComponent {
 
     handleLocationClick = () => {
         return getLocation()
-            .then(() => this.setState({ isRedirect: true }))
+            .then((placeName) => this.setState({ isRedirect: true, value: `${placeName}` }))
             .catch((err) => this.setState({ errorMessage: err.toString() }));
     };
 
