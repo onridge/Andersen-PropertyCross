@@ -1,5 +1,8 @@
-export function getParams(obj) {
-    return `?${Object.entries(obj)
-        .map((entries) => `${entries.join('=')}&`)
-        .join('')}`;
+export function getParams(requestParams) {
+    return requestParams
+        ? `?${Object.keys(requestParams)
+              .map((key) => (requestParams[key] ? `${key}=${requestParams[key]}` : ''))
+              .filter(Boolean)
+              .join('&')}`
+        : '';
 }
