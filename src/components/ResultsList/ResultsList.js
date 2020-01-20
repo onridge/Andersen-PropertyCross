@@ -3,7 +3,9 @@ import ResultsListPure from './ResultsListPure';
 import getApartmentsList from '../../actions/getApartmentsList';
 
 const mapStateToProps = ({ apartmentsListReducer }) => {
-    return { apartmentsList: apartmentsListReducer.apartmentsList };
+    const { apartmentsList, totalResults } = apartmentsListReducer;
+
+    return { apartmentsList, totalResults };
 };
 
 const mapDispatchToProps = (dispatch) => ({

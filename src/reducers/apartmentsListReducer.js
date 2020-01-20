@@ -7,7 +7,11 @@ function apartmentsListReducer(state = initState, action) {
 
     switch (type) {
         case 'RESULT_LIST_UPDATE':
-            return { ...state, apartmentsList: [...state.apartmentsList, ...payload.listings] };
+            return {
+                ...state,
+                apartmentsList: [...state.apartmentsList, ...payload.listings],
+                totalResults: payload.totalResults,
+            };
         case 'GET_CURRENT_APARTMENT':
             return { ...state, currentApartment: payload };
         default:

@@ -1,7 +1,7 @@
 .cart {
     display: flex;
     justify-content: baseline;
-    margin: 10px;
+    margin-bottom: 10px;
     padding: 5px;
     border: 2px solid;
 }
