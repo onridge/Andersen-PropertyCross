@@ -23,17 +23,15 @@ export default class ResultsListPure extends React.PureComponent {
     loadApartments = () => {
         return this.props
             .getApartmentsList({ city: this.props.match.params.city, pageNumber: this.state.currentPage })
-            .then((data) => {
+            .then(() => {
                 return this.setState({
-                    totalPages: data.payload.totalResults,
                     currentPage: this.state.currentPage + 1,
                 });
             });
     };
 
     render() {
-        const { totalPages } = this.state;
-        const { apartmentsList, match } = this.props;
+        const { apartmentsList, match, totalResults } = this.props;
 
         if (!apartmentsList.length) {
             return <Loader />;
@@ -43,7 +41,7 @@ export default class ResultsListPure extends React.PureComponent {
                 <InfiniteScroll updateList={this.loadApartments}>
                     <div className={styles.wrapper}>
                         <Text>
-                            Result List {apartmentsList.length} of {totalPages}
+                            Result List {apartmentsList.length} of {totalResults}
                         </Text>
                     </div>
                     <ul>
@@ -67,6 +65,7 @@ export default class ResultsListPure extends React.PureComponent {
 
 ResultsListPure.propTypes = {
     apartmentsList: PropTypes.array,
+    totalResults: PropTypes.number,
     getApartmentsList: PropTypes.func,
     match: PropTypes.object,
 };
