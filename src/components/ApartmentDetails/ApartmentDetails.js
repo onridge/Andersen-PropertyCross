@@ -1,19 +1,34 @@
 import { connect } from 'react-redux';
+import { includes } from 'ramda';
 import ApartmentDetailsPure from './ApartmentDetailsPure';
 import getApartment from '../../actions/getApartment';
-import addToFavoritesList from '../../actions/addToFavoritesList';
+import getFavoritesApartments from '../../actions/getFavoritesApartments';
+import deleteFromFavorites from '../../actions/deleteFromFavorites';
+import addApartmentToFavorites from '../../actions/addApartmentToFavorites';
+import getApartmentId from '../../utils/getApartmentId';
 
-const mapStateToProps = ({ apartmentsListReducer }) => {
+function checkApartmentInFavorites(favoriteListReducer, id) {
+    const { favorites } = favoriteListReducer;
+    const apartment = favorites.find((apart) => Math.abs(id) === getApartmentId(apart));
+
+    return includes(apartment, favorites);
+}
+
+const mapStateToProps = ({ apartmentsListReducer, favoritesListReducer }, props) => {
+    const { id } = props.match.params;
+
     return {
         currentApartment: apartmentsListReducer.currentApartment,
-        isFavorite: apartmentsListReducer.isFavorite,
+        isFavorite: checkApartmentInFavorites(favoritesListReducer, id),
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         getApartment: (payload) => dispatch(getApartment(payload)),
-        addToFavoritesList: (payload) => dispatch(addToFavoritesList(payload)),
+        getFavoritesApartments: () => dispatch(getFavoritesApartments()),
+        deleteFromFavorites: (payload) => dispatch(deleteFromFavorites(payload)),
+        addApartmentToFavorites: (payload) => dispatch(addApartmentToFavorites(payload)),
     };
 };
 

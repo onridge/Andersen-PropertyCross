@@ -4,11 +4,19 @@ import setLocalStorage from '../services/setLocalStorage';
 import { favoritesList } from '../constants/constants';
 
 function addApartmentToFavorites(searchApartment) {
-    getLocalStorage(favoritesList).then((list) => {
-        if (!includes(searchApartment, list)) {
-            setLocalStorage(favoritesList, [...list, searchApartment]);
-        }
-    });
+    return (dispatch) => {
+        return getLocalStorage(favoritesList).then((list) => {
+            if (!includes(searchApartment, list)) {
+                const updatedList = [...list, searchApartment];
+
+                setLocalStorage(favoritesList, updatedList);
+                return dispatch({
+                    type: 'FAVORITES_LIST_UPDATED',
+                    payload: updatedList,
+                });
+            }
+        });
+    };
 }
 
 export default addApartmentToFavorites;

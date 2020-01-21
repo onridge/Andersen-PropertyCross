@@ -15,12 +15,14 @@ export default class ApartmentDetails extends React.PureComponent {
             city,
             numberPage: 1,
         });
+        this.props.getFavoritesApartments();
     }
 
     handleClick = () => {
-        const { currentApartment, match, addToFavoritesList } = this.props;
+        const { match, currentApartment, deleteFromFavorites, addApartmentToFavorites, isFavorite } = this.props;
+        const apartment = { ...currentApartment, city: match.params.city };
 
-        addToFavoritesList({ ...currentApartment, city: match.params.city });
+        isFavorite ? deleteFromFavorites(apartment) : addApartmentToFavorites(apartment);
     };
 
     render() {
@@ -60,5 +62,7 @@ ApartmentDetails.propTypes = {
     currentApartment: PropTypes.object,
     match: PropTypes.object,
     history: PropTypes.object,
-    addToFavoritesList: PropTypes.func,
+    deleteFromFavorites: PropTypes.func,
+    addApartmentToFavorites: PropTypes.func,
+    getFavoritesApartments: PropTypes.func,
 };

@@ -6,6 +6,7 @@ import Loader from '../loader/loader';
 import ResultsListElement from '../ResultsListElement/ResultsListElement';
 import styles from './ResultsList.css';
 import Layout from '../Layout/Layout';
+import getApartmentId from '../../utils/getApartmentId';
 
 export default class ResultsListPure extends React.PureComponent {
     state = {
@@ -50,7 +51,7 @@ export default class ResultsListPure extends React.PureComponent {
                                 key={apartment.lister_url}
                                 city={match.params.city}
                                 image={apartment.thumb_url}
-                                id={apartment.latitude + apartment.price_high}
+                                id={getApartmentId(apartment)}
                                 price={apartment.price_formatted}
                                 bedroomNumber={apartment.bedroom_number}
                                 title={apartment.title}

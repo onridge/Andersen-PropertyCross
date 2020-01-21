@@ -1,3 +1,4 @@
+import { includes } from 'ramda';
 import { getParams } from '../utils/getParams';
 
 const defaultParams = {
@@ -13,8 +14,9 @@ const apiUrl = 'http://api.nestoria.co.uk/api';
 
 function validatingCodeResponse(data) {
     const responseCode = Number(data.response.application_response_code);
+    const validatingCodes = [100, 101, 110];
 
-    return responseCode === 100;
+    return includes(responseCode, validatingCodes);
 }
 
 function apartmentsService(payload) {
