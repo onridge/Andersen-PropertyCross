@@ -6,16 +6,14 @@ function apartmentsListReducer(state = initState, action) {
     const { type, payload } = action;
 
     switch (type) {
-        case 'RESULT_LIST_UPDATE':
+        case 'RESULT_LIST_UPDATED':
             return {
                 ...state,
                 apartmentsList: [...state.apartmentsList, ...payload.listings],
                 totalResults: payload.totalResults,
             };
-        case 'GET_CURRENT_APARTMENT':
+        case 'CURRENT_APARTMENT_LOADED':
             return { ...state, currentApartment: payload };
-        case 'STATUS_FAVORITES':
-            return { ...state, isFavorite: payload };
         default:
             return state;
     }

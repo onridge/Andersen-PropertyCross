@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import getApartmentId from '../../utils/getApartmentId';
 import Layout from '../Layout/Layout';
 import ResultsListElement from '../ResultsListElement/ResultsListElement';
 import Loader from '../loader/loader';
@@ -30,7 +31,7 @@ export default class FavoritesListPure extends React.PureComponent {
                                 key={favorite.lister_url}
                                 city={favorite.city}
                                 image={favorite.thumb_url}
-                                id={favorite.latitude + favorite.price_high}
+                                id={getApartmentId(favorite)}
                                 price={favorite.price_formatted}
                                 bedroomNumber={favorite.bedroom_number}
                                 title={favorite.title}
