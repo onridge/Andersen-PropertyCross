@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
-    "module": "amd",
+    "module": "commonjs",
     "outDir": "./dist",
     "preserveConstEnums": true,
     "removeComments": true,
@@ -12,6 +12,8 @@
     "strict": true,
     "downlevelIteration": true,
     "noImplicitAny": false,
+    "alwaysStrict": true,
+    "strictNullChecks": false,
     "watch": true
   },
   "include": ["src/**/*"],

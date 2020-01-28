@@ -1,12 +1,47 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ApartmentView from '../ApartmentView/ApartmentView';
 import Layout from '../Layout/Layout';
 import Loader from '../loader/loader';
 import Text from '../TextContent/Text/Text';
 import styles from './ApartmentDetails.css';
 
-export default class ApartmentDetails extends React.PureComponent {
+interface Apartment {
+    thumb_url: string;
+    price_formatted: string;
+    bedroom_number: number;
+    summary: string;
+    title: string;
+}
+
+interface MatchInterface {
+    params: {
+        id: number;
+        city: string;
+    };
+}
+
+interface HistoryInterface {
+    goBack: () => any;
+}
+
+interface GetApartmentInterface {
+    apartmentId: number;
+    city: string;
+    numberPage: number;
+}
+
+interface ApartmentDetailsPureProps {
+    getApartment: (payload: GetApartmentInterface) => any;
+    isFavorite: boolean;
+    currentApartment: Apartment;
+    match: MatchInterface;
+    history: HistoryInterface;
+    deleteFromFavorites: (Apartment) => any;
+    addApartmentToFavorites: (Apartment) => any;
+    getFavoritesApartments: () => any;
+}
+
+export default class ApartmentDetails extends React.PureComponent<ApartmentDetailsPureProps> {
     componentDidMount() {
         const { id, city } = this.props.match.params;
 
@@ -55,14 +90,3 @@ export default class ApartmentDetails extends React.PureComponent {
         );
     }
 }
-
-ApartmentDetails.propTypes = {
-    getApartment: PropTypes.func,
-    isFavorite: PropTypes.bool,
-    currentApartment: PropTypes.object,
-    match: PropTypes.object,
-    history: PropTypes.object,
-    deleteFromFavorites: PropTypes.func,
-    addApartmentToFavorites: PropTypes.func,
-    getFavoritesApartments: PropTypes.func,
-};
