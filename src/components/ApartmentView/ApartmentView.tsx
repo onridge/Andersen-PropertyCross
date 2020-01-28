@@ -1,8 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './ApartmentView.css';
 
-function ApartmentView({ city, image, price, bedroomNumber, summary, title }) {
+interface ApartmentViewProps {
+    city: string;
+    image: string;
+    price: string;
+    bedroomNumber: number;
+    summary: string;
+    title: string;
+}
+
+function ApartmentView({ city, image, price, bedroomNumber, summary, title }: ApartmentViewProps) {
     return (
         <div className={styles.wrapper}>
             <p className={styles.title}>{title}</p>
@@ -15,14 +23,5 @@ function ApartmentView({ city, image, price, bedroomNumber, summary, title }) {
         </div>
     );
 }
-
-ApartmentView.propTypes = {
-    city: PropTypes.string,
-    image: PropTypes.string,
-    price: PropTypes.string,
-    bedroomNumber: PropTypes.number,
-    summary: PropTypes.string,
-    title: PropTypes.string,
-};
 
 export default ApartmentView;
