@@ -11,7 +11,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx|ts|tsx)$/,
                 include: path.resolve(__dirname, 'src'),
                 use: ['babel-loader'],
             },
@@ -30,6 +30,9 @@ module.exports = {
                 ],
             },
         ],
+    },
+    resolve: {
+        extensions: ['*', '.js', '.jsx', '.ts', '.tsx'],
     },
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),

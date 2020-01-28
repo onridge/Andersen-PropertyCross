@@ -6,16 +6,16 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
-    "lint": "eslint src/**/*.js",
+    "lint": "eslint src/**/*.tsx",
     "stylelint": "stylelint --fix src/**/*.css",
-    "lint:fix": "eslint --fix src/**/*.js",
+    "lint:fix": "eslint --fix src/**/*.tsx",
     "test": "jest --watch",
     "prepush-tests": "jest"
   },
   "jest": {
     "verbose": true,
     "clearMocks": false,
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx|ts|tsx)$",
     "setupFilesAfterEnv": [
       "<rootDir>src/setupTests.js"
     ],
@@ -23,7 +23,7 @@
       "<rootDir>/(node_modules)/"
     ],
     "collectCoverageFrom": [
-      "src/components/**/*.{js,jsx}"
+      "src/components/**/*.{js,jsx,ts,tsx}"
     ],
     "moduleNameMapper": {
       "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
@@ -42,7 +42,8 @@
   "babel": {
     "presets": [
       "@babel/preset-env",
-      "@babel/preset-react"
+      "@babel/preset-react",
+      "@babel/preset-typescript"
     ],
     "plugins": [
       "react-css-modules",
@@ -60,6 +61,10 @@
     "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
     "@babel/preset-react": "^7.7.4",
+    "@babel/preset-typescript": "^7.8.3",
+    "@types/react-dom": "^16.9.5",
+    "@types/react-redux": "^7.1.7",
+    "@types/react-router-dom": "^5.1.3",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "babel-polyfill": "^6.26.0",
@@ -89,8 +94,11 @@
     "ramda": "^0.26.1",
     "redux-thunk": "^2.3.0",
     "require": "^2.4.20",
+    "source-map-loader": "^0.2.4",
     "style-loader": "^1.0.0",
     "stylelint": "^12.0.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
