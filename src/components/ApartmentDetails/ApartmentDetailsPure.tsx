@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import ApartmentView from '../ApartmentView/ApartmentView';
 import Layout from '../Layout/Layout';
 import Loader from '../loader/loader';
@@ -30,7 +30,7 @@ interface GetApartmentInterface {
     numberPage: number;
 }
 
-interface ApartmentDetailsPureProps {
+interface Props {
     getApartment: (payload: GetApartmentInterface) => any;
     isFavorite: boolean;
     currentApartment: Apartment;
@@ -41,7 +41,7 @@ interface ApartmentDetailsPureProps {
     getFavoritesApartments: () => any;
 }
 
-export default class ApartmentDetails extends React.PureComponent<ApartmentDetailsPureProps> {
+export default class ApartmentDetails extends PureComponent<Props> {
     componentDidMount() {
         const { id, city } = this.props.match.params;
 
