@@ -8,7 +8,7 @@ module.exports = {
             legacyDecorators: true,
         },
     },
-    plugins: ['react', 'jsx-a11y', 'import', 'jest'],
+    plugins: ['react', 'jsx-a11y', 'import', 'jest', 'typescript'],
     env: {
         browser: true,
         node: true,
@@ -21,6 +21,11 @@ module.exports = {
             pragma: 'React',
             version: '16.4.0',
         },
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        }
     },
     globals: {
         jsdom_locationAssignParams: true, // TODO перенести в плагин
