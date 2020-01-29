@@ -1,14 +1,34 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 import InfiniteScroll from '../infiniteScroll/InfiniteScroll';
 import Text from '../TextContent/Text/Text';
 import Loader from '../loader/loader';
 import ResultsListElement from '../ResultsListElement/ResultsListElement';
-import styles from './ResultsList.css';
 import Layout from '../Layout/Layout';
 import getApartmentId from '../../utils/getApartmentId';
+import styles from './ResultsList.css';
 
-export default class ResultsListPure extends React.PureComponent {
+interface Apartment {
+    lister_url: string;
+    thumb_url: string;
+    price_formatted: string;
+    bedroom_number: number;
+    title: string;
+}
+
+interface MatchInterface {
+    params: {
+        city: string;
+    };
+}
+
+interface Props {
+    apartmentsList: Apartment[];
+    totalResults: number;
+    getApartmentsList: (payload: { city: string; pageNumber: number }) => any;
+    match: MatchInterface;
+}
+
+export default class ResultsListPure extends PureComponent<Props> {
     state = {
         currentPage: 1,
     };
@@ -63,10 +83,3 @@ export default class ResultsListPure extends React.PureComponent {
         );
     }
 }
-
-ResultsListPure.propTypes = {
-    apartmentsList: PropTypes.array,
-    totalResults: PropTypes.number,
-    getApartmentsList: PropTypes.func,
-    match: PropTypes.object,
-};

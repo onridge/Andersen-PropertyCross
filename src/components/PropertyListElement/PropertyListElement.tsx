@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Redirect } from 'react-router';
-import PropTypes from 'prop-types';
 import styles from './PropertyListElement.css';
 
-class PropertyListElement extends React.PureComponent {
+interface Props {
+    item: string;
+}
+
+class PropertyListElement extends PureComponent<Props> {
     state = {};
 
     handleClick = (value) => {
@@ -27,9 +30,5 @@ class PropertyListElement extends React.PureComponent {
         );
     }
 }
-
-PropertyListElement.propTypes = {
-    item: PropTypes.string,
-};
 
 export default PropertyListElement;
