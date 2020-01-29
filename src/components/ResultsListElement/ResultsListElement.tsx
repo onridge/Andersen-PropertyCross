@@ -1,10 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Text from '../TextContent/Text/Text';
 import styles from './ResultsListElement.css';
 
-function ResultsListElement({ city, image, id, price, bedroomNumber, title }) {
+interface Props {
+    city: string;
+    image: string;
+    id: number;
+    price: string;
+    bedroomNumber: number;
+    title: string;
+}
+
+function ResultsListElement({ city, image, id, price, bedroomNumber, title }: Props) {
     return (
         <li>
             <Link to={`/results/${city}/${id}`} className={styles.link}>
@@ -22,14 +30,5 @@ function ResultsListElement({ city, image, id, price, bedroomNumber, title }) {
         </li>
     );
 }
-
-ResultsListElement.propTypes = {
-    bedroomNumber: PropTypes.number,
-    id: PropTypes.number,
-    city: PropTypes.string,
-    image: PropTypes.string,
-    price: PropTypes.string,
-    title: PropTypes.string,
-};
 
 export default ResultsListElement;

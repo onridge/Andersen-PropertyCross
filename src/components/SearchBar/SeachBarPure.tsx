@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Redirect } from 'react-router';
 import PropertyList from '../PropertyList/PropertyList';
 import ErrorContent from '../Error/Error';
@@ -6,7 +6,13 @@ import addRecentCityInList from '../../actions/addRecentCityInList';
 import getLocation from '../../actions/getLocation';
 import styles from './SearchBar.css';
 
-class SearchBarPure extends React.PureComponent {
+interface State {
+    value: string;
+    isRedirect: boolean;
+    errorMessage: string;
+}
+
+class SearchBarPure extends PureComponent<State> {
     state = {
         value: '',
         isRedirect: false,
