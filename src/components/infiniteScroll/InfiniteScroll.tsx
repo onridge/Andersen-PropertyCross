@@ -1,8 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent, ReactChild } from 'react';
 import { throttle } from '../../utils/throttle';
 
-export default class InfiniteScroll extends React.PureComponent {
+interface Props {
+    updateList: () => any;
+    children: ReactChild;
+}
+
+export default class InfiniteScroll extends PureComponent<Props> {
     componentDidMount() {
         window.addEventListener('scroll', this.onScrollDown);
     }
@@ -23,8 +27,3 @@ export default class InfiniteScroll extends React.PureComponent {
         return <div>{this.props.children}</div>;
     }
 }
-
-InfiniteScroll.propTypes = {
-    updateList: PropTypes.func,
-    children: PropTypes.node,
-};

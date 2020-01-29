@@ -1,10 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 import { searchStorage } from '../../constants/constants';
 import PropertyListElement from '../PropertyListElement/PropertyListElement';
 import Text from '../TextContent/Text/Text';
 
-export default class PropertyList extends React.PureComponent {
+interface Props {
+    searchedList: [];
+    fetchApartment: (key: string) => any;
+}
+
+export default class PropertyList extends PureComponent<Props> {
     componentDidMount() {
         this.props.fetchApartments(searchStorage);
     }
@@ -26,8 +30,3 @@ export default class PropertyList extends React.PureComponent {
         );
     }
 }
-
-PropertyList.propTypes = {
-    searchedList: PropTypes.array,
-    fetchApartments: PropTypes.func,
-};
