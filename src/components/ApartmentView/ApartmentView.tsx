@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ApartmentView.css';
 
-interface ApartmentViewProps {
+interface Props {
     city: string;
     image: string;
     price: string;
@@ -10,7 +10,7 @@ interface ApartmentViewProps {
     title: string;
 }
 
-function ApartmentView({ city, image, price, bedroomNumber, summary, title }: ApartmentViewProps) {
+function ApartmentView({ city, image, price, bedroomNumber, summary, title }: Props) {
     return (
         <div className={styles.wrapper}>
             <p className={styles.title}>{title}</p>

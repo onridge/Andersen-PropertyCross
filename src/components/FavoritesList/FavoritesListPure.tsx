@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 import getApartmentId from '../../utils/getApartmentId';
 import Layout from '../Layout/Layout';
 import ResultsListElement from '../ResultsListElement/ResultsListElement';
@@ -7,7 +6,21 @@ import Loader from '../loader/loader';
 import Text from '../TextContent/Text/Text';
 import styles from './FavoritesList.css';
 
-export default class FavoritesListPure extends React.PureComponent {
+interface FavoriteInterface {
+    lister_url: string;
+    city: string;
+    thumb_url: string;
+    price_formatted: string;
+    bedroom_number: number;
+    title: string;
+}
+
+interface Props {
+    favorites: FavoriteInterface[];
+    getFavoritesApartment: () => any;
+}
+
+export default class FavoritesListPure extends PureComponent<Props> {
     componentDidMount() {
         this.props.getFavoritesApartments();
     }
@@ -47,8 +60,3 @@ export default class FavoritesListPure extends React.PureComponent {
         );
     }
 }
-
-FavoritesListPure.propTypes = {
-    favorites: PropTypes.array,
-    getFavoritesApartments: PropTypes.func,
-};
