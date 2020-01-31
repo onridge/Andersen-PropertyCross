@@ -10,7 +10,7 @@ const defaultParams = {
     page: '1',
 };
 
-const apiUrl = 'http://api.nestoria.co.uk/api';
+const apiUrl = 'https://cors-anywhere.herokuapp.com/https://api.nestoria.co.uk/api';
 
 function validatingCodeResponse(data) {
     const responseCode = Number(data.response.application_response_code);

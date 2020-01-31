@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import ApartmentView from '../ApartmentView/ApartmentView';
 import Layout from '../Layout/Layout';
 import Loader from '../loader/loader';
@@ -41,52 +41,53 @@ interface Props {
     getFavoritesApartments: () => any;
 }
 
-export default class ApartmentDetails extends PureComponent<Props> {
-    componentDidMount() {
-        const { id, city } = this.props.match.params;
+export default function ApartmentDetails(props: Props) {
+    React.useEffect(() => {
+        const { id, city } = props.match.params;
 
-        this.props.getApartment({
+        props.getApartment({
             apartmentId: id,
             city,
             numberPage: 1,
         });
-        this.props.getFavoritesApartments();
-    }
+    });
 
-    handleClick = () => {
-        const { match, currentApartment, deleteFromFavorites, addApartmentToFavorites, isFavorite } = this.props;
+    React.useEffect(() => {
+        props.getFavoritesApartments();
+    });
+
+    function handleClick() {
+        const { match, currentApartment, deleteFromFavorites, addApartmentToFavorites, isFavorite } = props;
         const apartment = { ...currentApartment, city: match.params.city };
 
         isFavorite ? deleteFromFavorites(apartment) : addApartmentToFavorites(apartment);
-    };
-
-    render() {
-        const { currentApartment, match, history, isFavorite } = this.props;
-
-        if (!currentApartment) {
-            return <Loader />;
-        }
-
-        return (
-            <Layout>
-                <div className={styles.wrapper}>
-                    <button type="button" className={styles.button} onClick={history.goBack}>
-                        Back
-                    </button>
-                    <Text>Property Details</Text>
-                    <button type="button" className={styles.button} onClick={this.handleClick}>
-                        {isFavorite ? '-' : '+'}
-                    </button>
-                </div>
-                <ApartmentView
-                    city={match.params.city}
-                    image={currentApartment.thumb_url}
-                    price={currentApartment.price_formatted}
-                    bedroomNumber={currentApartment.bedroom_number}
-                    summary={currentApartment.summary}
-                    title={currentApartment.title}
-                />
-            </Layout>
-        );
     }
+
+    const { currentApartment, match, history, isFavorite } = props;
+
+    if (!currentApartment) {
+        return <Loader />;
+    }
+
+    return (
+        <Layout>
+            <div className={styles.wrapper}>
+                <button type="button" className={styles.button} onClick={history.goBack}>
+                    Back
+                </button>
+                <Text>Property Details</Text>
+                <button type="button" className={styles.button} onClick={handleClick}>
+                    {isFavorite ? '-' : '+'}
+                </button>
+            </div>
+            <ApartmentView
+                city={match.params.city}
+                image={currentApartment.thumb_url}
+                price={currentApartment.price_formatted}
+                bedroomNumber={currentApartment.bedroom_number}
+                summary={currentApartment.summary}
+                title={currentApartment.title}
+            />
+        </Layout>
+    );
 }
