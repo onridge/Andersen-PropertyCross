@@ -16,6 +16,7 @@ describe('ApartmentDetails', () => {
     const getApartment = jest.fn().mockResolvedValue(Promise.resolve());
     const getFavoritesApartments = jest.fn();
     const addApartmentToFavorites = jest.fn();
+    const useEffect = jest.spyOn(React, 'useEffect').mockImplementation((f) => f());
     const wrapper = shallow(
         <ApartmentDetailsPure
             match={match}
@@ -28,8 +29,7 @@ describe('ApartmentDetails', () => {
     );
 
     it('should call componentDidMount once', () => {
-        expect(getApartment).toHaveBeenCalledTimes(1);
-        expect(getFavoritesApartments).toHaveBeenCalledTimes(1);
+        expect(useEffect).toHaveBeenCalledTimes(2);
     });
 
     it('change text after click', () => {

@@ -5,7 +5,7 @@ import Text from '../TextContent/Text/Text';
 
 interface Props {
     searchedList: [];
-    fetchApartment: (key: string) => any;
+    fetchApartments: (key: string) => any;
 }
 
 export default class PropertyList extends PureComponent<Props> {
